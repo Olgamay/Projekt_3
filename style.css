@@ -22,6 +22,10 @@ header {
     padding: 5px;
 }
 
+.header_li:hover {
+    color: black;
+}
+
 .header_button {
     border: none;
     background-color: #FFFFFF;
@@ -67,6 +71,10 @@ button {
     color: #E5E5E5;
     width: 25%;
     height: 30px;
+}
+
+.currency:hover {
+    background-color: blueviolet;
 }
 
 .text_input {
