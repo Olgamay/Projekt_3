@@ -1,28 +1,30 @@
 body {
     margin: 0;
     font-family: Roboto;
-    
-}
-
-.all {
-    max-width: 1400px;
-    margin: 0 auto;
+    font-weight: 400;
 }
 
 .header-all {
     display: flex;
     flex-direction: row;
     list-style: none;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     background-color: #F5F5F6;
     justify-content: space-between;
     color: #959BA4;
     font-size: 11px;
     font-weight: 500;
-    
+    text-align: 18px;
+    max-width: 1400px;
 }
 
+.header-icon {
+   margin: 5px;
+   align-self: center;
+   width: 150px;
+   text-align: center;
+}
 
 
 .header_ul {
@@ -31,17 +33,10 @@ body {
     justify-content: space-between;
     list-style: none;
     width: 700px;
-    padding: 0;
-    
-    
+    padding: 0;    
+    text-align: center;
+    align-items: center;
 }
-
-li {
-    
-    
-}
-
-
 
 li:hover {
     color: black;
@@ -83,7 +78,6 @@ p {
 
 .blocks_button {
     display: flex;
-    justify-content: center;
     margin-bottom: 20px;
 }
 
@@ -106,12 +100,15 @@ button {
     width: 300px;
     border-radius: 2px;
     padding: 10px;
+    
 }
 
 .name {
-    
+    border: none;
     font-size: 36px;
-    width: 50%;
+    width: 100%;
+    box-sizing: border-box;
+
 }
 
 .kurs {
