@@ -4,7 +4,12 @@ body {
     
 }
 
-header {
+.all {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header-all {
     display: flex;
     flex-direction: row;
     list-style: none;
@@ -15,22 +20,41 @@ header {
     color: #959BA4;
     font-size: 11px;
     font-weight: 500;
+    
 }
 
-.header_li {
-    margin: auto 10px;
-    padding: 5px;
+
+
+.header_ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+    width: 700px;
+    padding: 0;
+    
+    
 }
 
-.header_li:hover {
+li {
+    
+    
+}
+
+
+
+li:hover {
     color: black;
 }
 
 .header_button {
     border: none;
     background-color: #FFFFFF;
-    margin: auto 70px;
+    margin: 5px;
     color: black;
+    padding: 0;
+    width: 150px;
+    
 }
 
 .wrapper {
@@ -80,13 +104,18 @@ button {
 .text_input {
     border: 1px solid #E5E5E5;
     width: 300px;
-    height: 150px;
     border-radius: 2px;
+    padding: 10px;
 }
 
 .name {
-    margin: 10px;
+    
     font-size: 36px;
     width: 50%;
 }
 
+.kurs {
+    border: black;
+    margin-top: 30px;
+    font-size: 12px;
+}
