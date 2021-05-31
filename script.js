@@ -15,6 +15,9 @@ class Converter {
 
         let saleActiveElement = blockSale.querySelector('.active');
         this.saleName = saleActiveElement.getAttribute('data-name');
+
+        let buyActiveElement = blockBuy.querySelector('.active');
+        this.buyName = buyActiveElement.getAttribute('data-name');
     }
 
     /**
@@ -22,7 +25,7 @@ class Converter {
      */
     getDataFromHost() {
 
-        fetch(`${url}?api-key=${apiKey}&base=${this.saleName}`)
+        fetch(`${url}?api-key=${apiKey}&base=${this.saleName}&symbols=${this.buyName}`)
             .then((response) => {
                 response.json()
                 console.log(response)
@@ -37,7 +40,8 @@ class Converter {
     }
 
     render() {
-        
+        let saleIinput = 
+        let saleIinput = 
     }
 
     init() {
