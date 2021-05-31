@@ -3,46 +3,48 @@ class Converter {
     constructor() {
         this.url = 'http://api.exchangeratesapi.io/v1/latest'
         this.apiKey = '4b18d84adf059da4b42d650752aa3a76'
-        this.data = ''
-        
-        getCurrencyNames () {
-            let currencySale = document.querySelector('.currency-sale');
-            let currencyBye = document.querySelector('.currency-buy');
-            // this.baseCurrency = currencySale
-            // this.resultCurrency = currencyBye
+        this.data = '';
+    }   
 
-            let button = document.querySelector('button');
-            button.addEventListener('click', () => {
-                fetch('${url}?api-Key=${apiKey}')
-                .then((response) => {
-                    response.json()
-                    console.log(response)
-                })
-                .then((data) => {
-                    console.log(data)
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
+    /**
+     * Получаем текущие валюты из полей выбора валют
+     */
+    getCurrencyNames () {
+        let blockSale = document.querySelector('#sale');
+        let blockBuy = document.querySelector('#buy');
+
+        let saleActiveElement = blockSale.querySelector('.active');
+        this.saleName = saleActiveElement.getAttribute('data-name');
+    }
+
+    /**
+     * Делаем запрос к серверу для полчения котировок
+     */
+    getDataFromHost() {
+
+        fetch(`${url}?api-key=${apiKey}&base=${this.saleName}`)
+            .then((response) => {
+                response.json()
+                console.log(response)
             })
-        }
+            .then((data) => {
+                console.log(data)
+                this.render()
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
 
-        getDataFronHost() {
+    render() {
+        
+    }
 
-            this.data = ''
-        }
-
-        render() {
-
-        }
-
-        init() {
-            this.getCurrencyNames ()
-            this.etDataFronHost()
-            this.render()
-
-        }
-    }      
+    init() {
+        this.getCurrencyNames()
+        this.getDataFromHost()
+    }
+         
 }
 
 let Converter = new Converter()
