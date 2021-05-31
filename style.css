@@ -91,7 +91,11 @@ button {
     height: 30px;
 }
 
-.currency:hover {
+.currency-sale:hover {
+    background-color: blueviolet;
+}
+
+.currency-buy:hover {
     background-color: blueviolet;
 }
 
