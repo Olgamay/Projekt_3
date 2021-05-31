@@ -7,6 +7,13 @@ class Converter {
     }   
 
     /**
+     * Добавляет обработчики событий на кнопки
+     */
+    setEventListeneresForButtons() {
+        
+    }
+
+    /**
      * Получаем текущие валюты из полей выбора валют
      */
     getCurrencyNames () {
@@ -25,13 +32,13 @@ class Converter {
      */
     getDataFromHost() {
 
-        fetch(`${url}?api-key=${apiKey}&base=${this.saleName}&symbols=${this.buyName}`)
+        fetch(`${this.url}?access_key=${this.apiKey}&base=${this.saleName}&symbols=${this.buyName}`)
             .then((response) => {
-                response.json()
-                console.log(response)
+                return response.json()
             })
             .then((data) => {
-                console.log(data)
+                this.data = data;
+                console.log(data);
                 this.render()
             })
             .catch((error) => {
@@ -40,19 +47,20 @@ class Converter {
     }
 
     render() {
-        let saleIinput = 
-        let saleIinput = 
+        // let saleIinput = 
+        // let saleIinput = 
     }
 
     init() {
-        this.getCurrencyNames()
-        this.getDataFromHost()
+        this.setEventListeneresForButtons();
+        this.getCurrencyNames();
+        this.getDataFromHost();
     }
          
 }
 
-let Converter = new Converter()
-Converter.init()
+let converter = new Converter()
+converter.init()
 
 //     getCurrencyName () {
 //         let currencySale = document.querySelector('.currency-sale');
