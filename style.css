@@ -98,6 +98,9 @@ button {
 .currency-buy:hover {
     background-color: blueviolet;
 }
+.active {
+    background-color: blueviolet;
+}
 
 .text_input {
     border: 1px solid #E5E5E5;

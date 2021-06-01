@@ -38,7 +38,7 @@ class Converter {
             })
             .then((data) => {
                 this.data = data;
-                console.log(data);
+                console.log(this.data);
                 this.render()
             })
             .catch((error) => {
@@ -47,8 +47,11 @@ class Converter {
     }
 
     render() {
-        // let saleIinput = 
-        // let saleIinput = 
+        let saleIinput = document.querySelector('#sale-input');
+        let buyIinput = document.querySelector('#buy-input');
+        console.log(saleIinput.value)
+        buyIinput.value = saleIinput.value * this.data.rates.USD
+        console.log(this.data.rates.USD)
     }
 
     init() {
