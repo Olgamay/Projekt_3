@@ -13,8 +13,8 @@ class Converter {
         // 1. Ищем все элементы Button
         this.buttonSale = document.querySelectorAll('.currency-sale')
         this.buttonBuy = document.querySelectorAll('.currency-buy')
-        this.nameInputSale = document.querySelector('#sale-input')        
-        this.nameInputBuy = document.querySelector('#buy-input')
+        // this.nameInputSale = document.querySelector('#sale-input')        
+        // this.nameInputBuy = document.querySelector('#buy-input')
         
         console.log(this.buttonSale)
         console.log(this.buttonBuy)
@@ -23,15 +23,16 @@ class Converter {
 
         // 2. Добавляем обработчик события на click каждому элементу
         
-        saleCurrency.forEach((element) => {
-            this.buttonSale.addEventListener(click, (event)=> {
+        this.buttonSale.forEach((element) => {
+            console.log(element)
+            element.addEventListener(click, (event)=> {
                 let saleElement = element.classList.contains('.sale-active')
                 saleElement.classList.remove('.sale-active')
                 element.classList.add('.sale-active')
                 console.log(event.target)
                 
             // console.log(this.nameInputSale.value)
-        })
+            })
         })
         
         buyCurrency.forEach((element) => {
