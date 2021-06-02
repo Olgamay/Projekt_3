@@ -98,7 +98,7 @@ button {
 .currency-buy:hover {
     background-color: blueviolet;
 }
-.active {
+.buy-active, .sale-active {
     background-color: blueviolet;
 }
 
