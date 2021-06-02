@@ -10,8 +10,16 @@ class Converter {
      * Добавляет обработчики событий на кнопки
      */
     setEventListeneresForButtons() {
-        
-    }
+        // 1. Ищем все элементы GamepadButton
+
+        // 2. Добавляем обработчик события на click каждому элементу
+
+        // 3. При клике выполняем следующие действия: 
+        //     -Добавляем класс active к выбранному элементу и убираем
+        //         класс active у предидущего элементы
+        //     -Получить значения выбранных элементов
+        //     -Делаем запрос к серверу
+    }   
 
     /**
      * Получаем текущие валюты из полей выбора валют
@@ -21,10 +29,10 @@ class Converter {
         let blockBuy = document.querySelector('#buy');
 
         let saleActiveElement = blockSale.querySelector('.active');
-        this.saleName = saleActiveElement.getAttribute('data-name');
+        this.saleName = saleActiveElement.getAttribute('data-name').toUpperCase();
 
         let buyActiveElement = blockBuy.querySelector('.active');
-        this.buyName = buyActiveElement.getAttribute('data-name');
+        this.buyName = buyActiveElement.getAttribute('data-name').toUpperCase();
     }
 
     /**
@@ -50,8 +58,9 @@ class Converter {
         let saleIinput = document.querySelector('#sale-input');
         let buyIinput = document.querySelector('#buy-input');
         console.log(saleIinput.value)
-        buyIinput.value = saleIinput.value * this.data.rates.USD
-        console.log(this.data.rates.USD)
+        buyIinput.value = saleIinput.value * this.data.rates[this.buyName]
+        console.log(this.buyName)
+        console.log(this.data.rates[this.buyName] )
     }
 
     init() {
