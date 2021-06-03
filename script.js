@@ -11,35 +11,65 @@ class Converter {
      */
     setEventListeneresForButtons() {
         // 1. Ищем все элементы Button
-        this.buttonSale = document.querySelectorAll('.currency-sale')
-        this.buttonBuy = document.querySelectorAll('.currency-buy')
+        let buttonSale = document.querySelectorAll('.currency-sale')
+        let buttonBuy = document.querySelectorAll('.currency-buy')
         // this.nameInputSale = document.querySelector('#sale-input')        
         // this.nameInputBuy = document.querySelector('#buy-input')
         
-        console.log(this.buttonSale)
-        console.log(this.buttonBuy)
+        console.log(buttonSale)
+        console.log(buttonBuy)
         // console.log(this.nameInputSale.value)
         // console.log(this.nameInputBuy.value)
 
         // 2. Добавляем обработчик события на click каждому элементу
         
-        this.buttonSale.forEach((element) => {
-            console.log(element)
-            element.addEventListener(click, (event)=> {
-                let saleElement = element.classList.contains('.sale-active')
-                saleElement.classList.remove('.sale-active')
-                element.classList.add('.sale-active')
-                console.log(event.target)
-                
-            // console.log(this.nameInputSale.value)
+        buttonSale.forEach((element) => {
+            element.addEventListener('click', (event)=> {
+            let saleActive = document.querySelector('.sale-active')
+            saleActive.classList.contains('sale-active')
+            saleActive.classList.remove('sale-active')
+            element.classList.add('sale-active')
+            let saleTarget = event.target.innerText
+            console.log(saleTarget)
+
+            fetch(`${this.url}?access_key=${this.apiKey}&base=${saleTarget}`)
+                .then((response) => {
+                    return response.json()
+                })
+                .then((data) => {
+                    this.data = data;
+                    console.log(this.data);
+                    this.render()
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
             })
         })
-        
-        buyCurrency.forEach((element) => {
-            this.buttonBuy.addEventListener(click, ()=> {
-            console.log(this.nameInputBuy.value)
 
-        })
+        
+        buttonBuy.forEach((element) => {
+            element.addEventListener('click', (event)=> {
+                let buyAactive = document.querySelector('.buy-active')
+                buyAactive.classList.contains('buy-active')
+                buyAactive.classList.remove('buy-active')
+                element.classList.add('buy-active')
+                let buyTarget = event.target.innerText
+                console.log(buyTarget)
+
+                fetch(`${this.url}?access_key=${this.apiKey}&symbols=${buyTarget}`)
+                    .then((response) => {
+                        return response.json()
+                    })
+                    .then((data) => {
+                        this.data = data;
+                        console.log(this.data);
+                        this.render()
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
+                })
         })
 
         
@@ -60,10 +90,10 @@ class Converter {
         let blockBuy = document.querySelector('#buy');
 
         let saleActiveElement = blockSale.querySelector('.active');
-        this.saleName = saleActiveElement.getAttribute('data-name').toUpperCase();
+        this.saleName = saleActiveElement.getAttribute('#data-name').toUpperCase();
 
         let buyActiveElement = blockBuy.querySelector('.active');
-        this.buyName = buyActiveElement.getAttribute('data-name').toUpperCase();
+        this.buyName = buyActiveElement.getAttribute('#data-name').toUpperCase();
     }
 
     /**
@@ -71,7 +101,7 @@ class Converter {
      */
     getDataFromHost() {
 
-        fetch(`${this.url}?access_key=${this.apiKey}&base=${this.saleName}&symbols=${this.buyName}`)
+        fetch(`${this.url}?access_key=${this.apiKey}&symbols=${this.buyName}`)
             .then((response) => {
                 return response.json()
             })
