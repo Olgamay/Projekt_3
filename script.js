@@ -2,7 +2,7 @@
 class Converter {
     constructor() {
         this.url = 'http://api.exchangeratesapi.io/v1/latest'
-        this.apiKey = '4b18d84adf059da4b42d650752aa3a76'
+        this.apiKey = '6dcefea4f22c9b1e613d9c9c80921d22'
         this.data = '';
     }   
 
