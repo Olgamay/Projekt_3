@@ -2,7 +2,7 @@
 class Converter {
     constructor() {
         this.url = 'http://api.exchangeratesapi.io/v1/latest'
-        this.apiKey = '6dcefea4f22c9b1e613d9c9c80921d22'
+        this.apiKey = 'a9778773f64b39c4542ec6153740a765'
         this.data = '';
     }   
 
@@ -25,28 +25,16 @@ class Converter {
         
         buttonSale.forEach((element) => {
             element.addEventListener('click', (event)=> {
-            let saleActive = document.querySelector('.sale-active')
-            saleActive.classList.contains('sale-active')
-            saleActive.classList.remove('sale-active')
-            element.classList.add('sale-active')
-            let saleTarget = event.target.innerText
-            console.log(saleTarget)
+                let saleActive = document.querySelector('.sale-active')
+                saleActive.classList.remove('sale-active')
+                element.classList.add('sale-active')
 
-            fetch(`${this.url}?access_key=${this.apiKey}&base=${saleTarget}`)
-                .then((response) => {
-                    return response.json()
-                })
-                .then((data) => {
-                    this.data = data;
-                    console.log(this.data);
-                    this.render()
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
+                // let saleTarget = event.target.innerText
+                // console.log(saleTarget)
+                this.getCurrencyNames(); 
+                this.getDataFromHost();
             })
         })
-
         
         buttonBuy.forEach((element) => {
             element.addEventListener('click', (event)=> {
@@ -54,24 +42,13 @@ class Converter {
                 buyAactive.classList.contains('buy-active')
                 buyAactive.classList.remove('buy-active')
                 element.classList.add('buy-active')
-                let buyTarget = event.target.innerText
-                console.log(buyTarget)
+                // let buyTarget = event.target.innerText
+                // console.log(buyTarget)
 
-                fetch(`${this.url}?access_key=${this.apiKey}&symbols=${buyTarget}`)
-                    .then((response) => {
-                        return response.json()
-                    })
-                    .then((data) => {
-                        this.data = data;
-                        console.log(this.data);
-                        this.render()
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
-                })
+                this.getCurrencyNames(); 
+                this.getDataFromHost();
+            })
         })
-
         
         
 
@@ -89,19 +66,19 @@ class Converter {
         let blockSale = document.querySelector('#sale');
         let blockBuy = document.querySelector('#buy');
 
-        let saleActiveElement = blockSale.querySelector('.active');
-        this.saleName = saleActiveElement.getAttribute('#data-name').toUpperCase();
+        let saleActiveElement = blockSale.querySelector('.sale-active');
+        this.saleName = saleActiveElement.getAttribute('data-name').toUpperCase();
 
-        let buyActiveElement = blockBuy.querySelector('.active');
-        this.buyName = buyActiveElement.getAttribute('#data-name').toUpperCase();
+        let buyActiveElement = blockBuy.querySelector('.buy-active');
+        this.buyName = buyActiveElement.getAttribute('data-name').toUpperCase();
     }
 
     /**
      * Делаем запрос к серверу для полчения котировок
      */
     getDataFromHost() {
-
-        fetch(`${this.url}?access_key=${this.apiKey}&symbols=${this.buyName}`)
+        console.log(`${this.url}?access_key=${this.apiKey}&base=${this.saleName}&symbols=${this.buyName}`)
+        fetch(`${this.url}?access_key=${this.apiKey}&base=${this.saleName}&symbols=${this.buyName}`)
             .then((response) => {
                 return response.json()
             })
